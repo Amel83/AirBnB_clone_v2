@@ -12,9 +12,7 @@ env.user = "ubuntu"
 
 
 def do_pack():
-    """
-        return the archive path if archive has generated correctly.
-    """
+    """ated correctly dcth zafhk dgvf"""
 
     local("mkdir -p versions")
     date = datetime.now().strftime("%Y%m%d%H%M%S")
@@ -28,9 +26,8 @@ def do_pack():
 
 
 def do_deploy(archive_path):
-    """
-        try try try try trye.
-    """
+    """cdvdgb dgv cd bhjvd"""
+
     if os.path.exists(archive_path):
         archived_file = archive_path[9:]
         newest_version = "/data/web_static/releases/" + archived_file[:-4]
@@ -40,13 +37,13 @@ def do_deploy(archive_path):
         run("sudo tar -xzf {} -C {}/".format(archived_file,
                                              newest_version))
         run("sudo rm {}".format(archived_file))
+        
         run("sudo mv {}/web_static/* {}".format(newest_version,
                                                 newest_version))
         run("sudo rm -rf {}/web_static".format(newest_version))
         run("sudo rm -rf /data/web_static/current")
+        
         run("sudo ln -s {} /data/web_static/current".format(newest_version))
-
         print("New version deployed!")
         return True
-
     return False

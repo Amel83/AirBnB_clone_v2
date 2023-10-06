@@ -1,8 +1,11 @@
-# Setup the web servers for the deployment of web_static
+# gev htrw dcj rgjnvde fbh fy of web_static
+
 exec { '/usr/bin/env apt -y update' : }
 -> package { 'nginx':
   ensure => installed,
 }
+-> file { '/data/web_static/releases/test':
+  ensure => 'directory'                                    }                                                          -> file { '/data/web_static/shared':                         ensure => 'directory'                                    }
 -> file { '/data':
   ensure  => 'directory'
 }
@@ -10,12 +13,6 @@ exec { '/usr/bin/env apt -y update' : }
   ensure => 'directory'
 }
 -> file { '/data/web_static/releases':
-  ensure => 'directory'
-}
--> file { '/data/web_static/releases/test':
-  ensure => 'directory'
-}
--> file { '/data/web_static/shared':
   ensure => 'directory'
 }
 -> file { '/data/web_static/releases/test/index.html':
@@ -33,14 +30,9 @@ exec { '/usr/bin/env apt -y update' : }
   ensure => 'link',
   target => '/data/web_static/releases/test'
 }
+-> file { '/var/www':                                        ensure => 'directory'                                    }                                                          -> file { '/var/www/html':                                   ensure => 'directory'                                    }
 -> exec { 'chown -R ubuntu:ubuntu /data/':
   path => '/usr/bin/:/usr/local/bin/:/bin/'
-}
--> file { '/var/www':
-  ensure => 'directory'
-}
--> file { '/var/www/html':
-  ensure => 'directory'
 }
 -> file { '/var/www/html/index.html':
   ensure  => 'present',
