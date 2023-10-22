@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""starts a Flask web application"""
+"""starts flask web app"""
 from flask import Flask
 app = Flask(__name__)
 app.url_map.strict_slashes = False
@@ -7,19 +7,19 @@ app.url_map.strict_slashes = False
 
 @app.route('/')
 def hello_hbnb():
-    """print the web"""
+    """print hello hbnb"""
     return 'Hello HBNB!'
 
 
 @app.route('/hbnb')
 def hbnb():
-    """print the web"""
+    """print hbnb"""
     return 'HBNB'
 
 
 @app.route('/c/<text>')
 def c_is_fun(text):
-    """print C followed by value of text"""
+    """print C then value of text"""
     return 'C {}'.format(text.replace('_', ' '))
 
 

@@ -1,10 +1,6 @@
 #!/usr/bin/python3
 """
-Startstarts a Flask web application.
-Listens on 0.0.0.0  on port 5000.
-Routes:
-    * /hbnb_filters: HBnB HTML filters page.
-"""
+Startstarts a flask web app"""
 from flask import Flask
 from flask import render_template
 from models import storage
@@ -14,7 +10,7 @@ app = Flask(__name__)
 
 @app.route("/hbnb_filters", strict_slashes=False)
 def hbnb_filters():
-    """Displays the HBnB filters HTML page."""
+    """ filters HTML page."""
     states = storage.all("State")
     amenities = storage.all("Amenity")
     return render_template("10-hbnb_filters.html",
@@ -23,7 +19,7 @@ def hbnb_filters():
 
 @app.teardown_appcontext
 def teardown(excpt=None):
-    """Remove the current SQLAlchemy Session."""
+    """delete SQLAlchemy Session"""
     storage.close()
 
 
